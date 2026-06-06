@@ -13,20 +13,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --g: #0d2818;
-    --g1: #0f3320;
-    --g2: #155c35;
-    --g3: #1e8049;
-    --g4: #27a85f;
-    --g5: #38d678;
-    --black: #050c08;
-    --dark: #0a1a0f;
-    --card: #0d2018;
-    --border: rgba(38,168,95,0.18);
-    --border2: rgba(38,168,95,0.35);
-    --text: #e8f5ee;
-    --muted: rgba(232,245,238,0.55);
-    --white: #f0faf4;
+    --g: #0c2317;         /* Глубокий изумрудный темный */
+    --g1: #0e2b1d;
+    --g2: #104c2e;        /* Благородный темно-зеленый */
+    --g3: #166e43;        /* Средний изумрудный */
+    --g4: #1b8a55;        /* Приглушенный зеленый акцент */
+    --g5: #2cc980;        /* Светло-зеленый (неоновый акцент в меру) */
+    --black: #121212;     /* Дорогой матовый черный */
+    --dark: #1c1f1d;      /* Графитовый с легким зеленым отливом */
+    --card: #242826;      /* Графитовый для карточек */
+    --border: rgba(44,201,128,0.12);
+    --border2: rgba(44,201,128,0.28);
+    --text: #e2e8f0;      /* Светлый slate */
+    --muted: #94a3b8;     /* Нейтральный slate */
+    --white: #f8fafc;
     --r: 12px;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -356,33 +356,40 @@
   #services { background:var(--black); }
   .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width:1300px; margin:0 auto; }
   .srv-card {
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px; padding:28px;
-    transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    cursor:pointer; position:relative; overflow:hidden;
+    background: linear-gradient(135deg, rgba(36,40,38,0.5) 0%, rgba(20,24,22,0.6) 100%);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px; padding: 28px;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer; position: relative; overflow: hidden;
   }
   .srv-card::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:2px;
-    background:linear-gradient(90deg, var(--g2), var(--g4));
-    transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--g3), var(--g5));
+    transform:scaleX(0); transform-origin:left; transition:transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
-  .srv-card:hover { transform:translateY(-6px); border-color:var(--border2); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
+  .srv-card:hover { 
+    transform: translateY(-8px); 
+    border-color: var(--border2); 
+    box-shadow: 0 24px 48px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05); 
+  }
   .srv-card:hover::before { transform:scaleX(1); }
-  .srv-icon { font-size:38px; margin-bottom:16px; }
+  .srv-icon { font-size:38px; margin-bottom:16px; transition: transform 0.3s ease; }
+  .srv-card:hover .srv-icon { transform: scale(1.1) rotate(3deg); }
   .srv-card h3 { font-size:18px; font-weight:700; color:var(--white); margin-bottom:10px; }
-  .srv-card p { font-size:14px; color:var(--muted); line-height:1.6; }
+  .srv-card p { font-size:14px; color:var(--muted); line-height:1.65; }
   .srv-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
-  .tag { padding:3px 10px; border-radius:50px; background:rgba(39,168,95,0.1); border:1px solid var(--border); font-size:11px; color:var(--g4); }
+  .tag { padding:4px 11px; border-radius:50px; background:rgba(44,201,128,0.06); border:1px solid var(--border); font-size:11px; color:var(--g5); }
   .srv-btn {
     display:inline-flex; align-items:center; gap:8px; margin-top:20px;
-    padding:10px 16px; border-radius:8px;
-    background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.2);
+    padding:11px 18px; border-radius:8px;
+    background:rgba(37,211,102,0.08); border:1px solid rgba(37,211,102,0.25);
     color:#25D366; text-decoration:none; font-size:14px; font-weight:600;
-    transition:background 0.2s, transform 0.2s;
+    transition:background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative; z-index: 2;
   }
-  .srv-btn:hover { background:rgba(37,211,102,0.2); transform:translateY(-2px); }
+  .srv-btn:hover { background:rgba(37,211,102,0.18); transform:translateY(-2px); box-shadow: 0 4px 12px rgba(37,211,102,0.15); }
 
   /* ── COLD SECTION ── */
   #cold {
@@ -838,80 +845,93 @@
 <section id="services">
   <div style="max-width:1300px;margin:0 auto;">
     <div class="sec-head">
-      <div class="reveal"><span class="sec-tag">Услуги</span></div>
-      <h2 class="sec-title reveal reveal-delay-1">Что мы делаем</h2>
-      <p class="sec-desc reveal reveal-delay-2">Полный спектр инженерных систем для жилья, коммерции и производства</p>
+      <div class="reveal"><span class="sec-tag">Инженерные системы</span></div>
+      <h2 class="sec-title reveal reveal-delay-1">Услуги под ключ</h2>
+      <p class="sec-desc reveal reveal-delay-2">Полный комплекс проектных, монтажных и пусконаладочных работ для частных домов, коммерческих и промышленных объектов.</p>
     </div>
     <div class="services-grid">
       <div class="srv-card reveal">
-        <div class="srv-icon">❄️</div>
-        <h3>Тепловые насосы</h3>
-        <p>Воздух-вода системы нового поколения. Работают до −25°C, экономят до 70% на отоплении. Считаем окупаемость ещё до монтажа.</p>
-        <div class="srv-tags"><span class="tag">Воздух-вода</span><span class="tag">COP 4.5+</span><span class="tag">EVI</span></div>
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересуют%20тепловые%20насосы." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+        <div class="srv-icon">🔥</div>
+        <h3>Отопление</h3>
+        <p>Проектируем и собираем надежные отопительные системы. Выполняем обвязку котельных, монтаж радиаторов, внутрипольных конвекторов и разводку трубопроводов с точной балансировкой.</p>
+        <div class="srv-tags"><span class="tag">Котельные</span><span class="tag">Радиаторы</span><span class="tag">Разводка труб</span><span class="tag">Балансировка</span></div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20монтаж%20отопления%20под%20ключ." class="srv-btn" target="_blank">💬 Обсудить проект</a>
       </div>
       <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-icon">🌡️</div>
-        <h3>Системы фанкойлов</h3>
-        <p>Монтаж центральных систем кондиционирования с фанкойлами. Подходит для офисов, гостиниц, торговых площадей — там, где нужно зонировать климат.</p>
-        <div class="srv-tags"><span class="tag">VRF</span><span class="tag">2-трубная</span><span class="tag">4-трубная</span></div>
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересуют%20системы%20фанкойлов." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+        <div class="srv-icon">♨️</div>
+        <h3>Теплые полы</h3>
+        <p>Качественный монтаж водяного теплого пола с расчетом тепловой эффективности. Используем плотную подложку Пеноплекс 5см, фольгоизол, долговечные трубы PE-RT и надежные коллекторные шкафы.</p>
+        <div class="srv-tags"><span class="tag">Valfex PE-RT</span><span class="tag">Коллекторы</span><span class="tag">Стяжка</span><span class="tag">28$/м²</span></div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересует%20монтаж%20теплого%20пола." class="srv-btn" target="_blank">💬 Рассчитать смету</a>
       </div>
       <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-icon">♨️</div>
-        <h3>Тёплые полы</h3>
-        <p>Водяные тёплые полы — от стяжки до финального покрытия. Правильный пирог, укладка и подключение к тепловому насосу. <span class="dyn-floor-price">28</span>$ / м² под ключ.</p>
-        <div class="srv-tags"><span class="tag">Водяной</span><span class="tag">PE-RT X16</span><span class="tag">Под ключ</span></div>
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересует%20монтаж%20тёплого%20пола." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+        <div class="srv-icon">💧</div>
+        <h3>Водоснабжение</h3>
+        <p>Организуем бесперебойную подачу чистой горячей и холодной воды. Прокладываем трубы, устанавливаем насосы, гидроаккумуляторы, системы фильтрации и водоподготовки.</p>
+        <div class="srv-tags"><span class="tag">Разводка ХВС/ГВС</span><span class="tag">Фильтры</span><span class="tag">Насосы</span></div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20система%20водоснабжения." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
       </div>
       <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-icon">🔧</div>
-        <h3>Радиаторы</h3>
-        <p>Алюминиевые и биметаллические радиаторы. Работают с тепловыми насосами — вода тёплая, а не кипяток. Безопасно, экономично, долговечно.</p>
-        <div class="srv-tags"><span class="tag">Алюминий</span><span class="tag">Биметалл</span><span class="tag">Монтаж</span></div>
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересуют%20радиаторы." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+        <div class="srv-icon">🌀</div>
+        <h3>Канализация</h3>
+        <p>Проектируем и прокладываем внутренние и наружные сети водоотведения. Устанавливаем долговечные септики, прокладываем наружные магистрали с соблюдением уклонов, монтируем ливневки.</p>
+        <div class="srv-tags"><span class="tag">Септики</span><span class="tag">Наружные сети</span><span class="tag">Ливневка</span></div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20монтаж%20канализации." class="srv-btn" target="_blank">💬 Обсудить проект</a>
       </div>
       <div class="srv-card reveal">
-        <div class="srv-icon">💧</div>
-        <h3>Водонагреватели с тепловым насосом</h3>
-        <p>Установка накопительных водонагревателей с тепловым насосом. Горячая вода круглый год с минимальным расходом электроэнергии.</p>
-        <div class="srv-tags"><span class="tag">R290</span><span class="tag">R134A</span><span class="tag">Wi-Fi</span></div>
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Меня%20интересуют%20водонагреватели%20с%20тепловым%20насосом." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+        <div class="srv-icon">🔧</div>
+        <h3>Монтаж и пусконаладка</h3>
+        <p>Профессиональный монтаж тепловых насосов, чиллеров, фанкойлов и промышленных холодильных систем. Интегрируем климат в единую систему управления Modbus (BMS).</p>
+        <div class="srv-tags"><span class="tag">Тепловые насосы</span><span class="tag">Фанкойлы</span><span class="tag">Modbus</span><span class="tag">Сервис</span></div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Нужен%20монтаж%20и%20сервисное%20обслуживание." class="srv-btn" target="_blank">💬 Вызвать инженера</a>
       </div>
     </div>
+  </div>
 </section>
 
 <!-- COLD EQUIPMENT -->
 <section id="cold">
   <div class="cold-inner">
     <div>
-      <div class="reveal"><span class="sec-tag">Холодильное оборудование</span></div>
-      <h2 class="sec-title reveal reveal-delay-1">Делаем холод<br>любой сложности</h2>
-      <p class="sec-desc reveal reveal-delay-2" style="margin-bottom:32px;">Шоковая заморозка, холодильные камеры, промышленные системы охлаждения — проектируем и монтируем с нуля. Если нужна нестандартная камера — сделаем по вашим размерам.</p>
-      <div class="hero-btns reveal reveal-delay-3">
-        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20холодильное%20оборудование.%20Хочу%20обсудить%20проект." class="btn-wa" target="_blank">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.857L.054 23.394a.5.5 0 0 0 .612.612l5.537-1.48A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.692-.526-5.215-1.44l-.374-.222-3.882 1.038 1.038-3.882-.222-.374A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Обсудить проект в WhatsApp
+      <div class="reveal"><span class="sec-tag">Промышленный холод</span></div>
+      <h2 class="sec-title reveal reveal-delay-1">Проектирование и сборка холодильных систем</h2>
+      <p class="sec-desc reveal reveal-delay-2" style="margin-bottom:32px;">Мы занимаемся расчетом и изготовлением холодильного оборудования любой сложности под конкретные задачи вашего бизнеса. Подбираем агрегаты под объем продукции и температурный режим, монтируем камеры из качественных сэндвич-панелей PIR/PUR, собираем линии шоковой заморозки и промышленные водоохлаждающие системы.</p>
+      <div class="hero-btns reveal reveal-delay-3" style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20расчет%20и%20проектирование%20холодильного%20оборудования.%20Свяжитесь%20со%20мной." class="btn-wa" target="_blank" style="padding:16px 32px; font-size:16px; width:100%; max-width:420px; justify-content:center; box-shadow: 0 10px 20px rgba(37,211,102,0.15);">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" style="margin-right:8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.534 5.857L.054 23.394a.5.5 0 0 0 .612.612l5.537-1.48A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.692-.526-5.215-1.44l-.374-.222-3.882 1.038 1.038-3.882-.222-.374A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Связаться с инженером по холоду
         </a>
-        <a href="tel:+996999699620" class="btn-primary">📞 Позвонить</a>
+        <p style="color:var(--muted); font-size:14px; margin:0; width:100%;">Или звоните напрямую: <a href="tel:+996999699620" style="color:var(--g5); text-decoration:none; font-weight:600;"><span class="dyn-phone">+996 999 699 620</span></a></p>
       </div>
     </div>
     <div class="cold-cards reveal reveal-delay-2">
       <div class="cold-item">
         <div class="cold-item-icon">⚡</div>
-        <div><h4>Шоковая заморозка</h4><p>До −40°C за минимальное время. Для общепита, рыбы, мяса и производства</p></div>
+        <div>
+          <h4>Шоковая заморозка</h4>
+          <p>Снижение температуры продуктов до −40°C за минимальный промежуток времени. Идеально подходит для ягод, полуфабрикатов, рыбы и мяса.</p>
+        </div>
       </div>
       <div class="cold-item">
         <div class="cold-item-icon">🏭</div>
-        <div><h4>Холодильные камеры</h4><p>Строим под ключ любого размера — от 2 м² до промышленных складов</p></div>
+        <div>
+          <h4>Холодильные и морозильные камеры</h4>
+          <p>Сборка камер любого размера из сэндвич-панелей PIR/PUR. Проектируем герметичные хранилища для фармацевтики, овощей, фруктов и мяса.</p>
+        </div>
       </div>
       <div class="cold-item">
         <div class="cold-item-icon">🔬</div>
-        <div><h4>Промышленные системы</h4><p>Чиллеры, конденсаторные агрегаты, централизованные системы охлаждения</p></div>
+        <div>
+          <h4>Промышленные чиллеры и ККБ</h4>
+          <p>Сборка и монтаж компрессорно-конденсаторных агрегатов, систем охлаждения жидкостей (чиллеров) для пищевых и промышленных производств.</p>
+        </div>
       </div>
       <div class="cold-item">
         <div class="cold-item-icon">🛒</div>
-        <div><h4>Торговое холодильное</h4><p>Витрины, холодильные прилавки, шкафы для магазинов и кафе</p></div>
+        <div>
+          <h4>Системы выносного холода</h4>
+          <p>Проектирование и монтаж систем централизованного хладоснабжения для супермаркетов, ресторанов и пищеблоков общепита.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1032,8 +1052,9 @@
     <div class="cat-tabs reveal" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;">
       <button class="cat-tab active" onclick="showCat('heat-pumps')">Тепловые насосы</button>
       <button class="cat-tab" onclick="showCat('fancoils')">Фанкойлы</button>
+      <button class="cat-tab" onclick="showCat('boilers')">Водонагреватели</button>
       <button class="cat-tab" onclick="showCat('warm-floor')">Тёплый пол</button>
-      <button class="cat-tab" onclick="showCat('boilers')">Водонагреватели с тепловым насосом</button>
+      <button class="cat-tab" onclick="showCat('cold')">Холодильное оборудование</button>
       <button class="cat-tab" onclick="showCat('radiators')">Радиаторы</button>
     </div>
 
@@ -1236,7 +1257,7 @@
               <div class="form-group" style="margin-bottom:12px;">
                 <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">Выберите площадь/мощность:</label>
                 <select class="area-select" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:10px;border-radius:8px;outline:none;" onchange="updateProd(this)">
-                  <option style="color:#000" value='{"m":"ФП 34КМ", "p":"$570", "d":"650×650×290", "a":"20 м²"}'>20 м² / 1980 Вт</option>
+                  <option style="color:#000" value='{"m":"ФП 34КМ", "p":"$510", "d":"650×650×290", "a":"20 м²"}'>20 м² / 1980 Вт</option>
                   <option style="color:#000" value='{"m":"ФП 51КМ", "p":"$590", "d":"650×650×290", "a":"30 м²"}'>30 м² / 2980 Вт</option>
                   <option style="color:#000" value='{"m":"ФП 68КМ", "p":"$600", "d":"650×650×290", "a":"37 м²"}'>37 м² / 3680 Вт</option>
                   <option style="color:#000" value='{"m":"ФП 85КМ", "p":"$710", "d":"800×800×290", "a":"50 м²"}'>50 м² / 4980 Вт</option>
@@ -1418,6 +1439,82 @@
               </div>
             </div>
             <a href="#" class="prod-btn d-btn" target="_blank" style="display:none;">Написать в WhatsApp</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COLD (REFRIGERATION) -->
+    <div class="cat-section" id="cat-cold" style="display:none;">
+      <div class="prod-grid">
+
+        <!-- Industrial Split Systems -->
+        <div class="prod-card reveal">
+          <div class="prod-img-wrap">
+            <img src="monoblock-commercial.png" class="prod-img">
+            <div class="prod-badge" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);">Сплит-система</div>
+          </div>
+          <div class="prod-info">
+            <h3>Промышленные сплит-системы для охлаждения</h3>
+            <p>Коммерческие холодильные сплит-системы для складов, торговых залов и производственных помещений. Диапазон температур: −5°C до +12°C.</p>
+            <div class="prod-specs">
+              <span>❄️ от 5 до 50 кВт</span>
+              <span>🌡️ −5°C … +12°C</span>
+              <span>🔧 Под ключ</span>
+            </div>
+            <div class="prod-models">
+              <div class="prod-model-row"><span>Мощность охлаждения:</span><span style="color:var(--g4)">5 – 50 кВт</span></div>
+              <div class="prod-model-row"><span>Хладагент:</span><span style="color:var(--white)">R404A / R448A</span></div>
+              <div class="prod-model-row"><span>Монтаж:</span><span style="color:var(--white)">входит в стоимость</span></div>
+            </div>
+            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20промышленная%20сплит-система%20для%20охлаждения.%20Объём%20помещения%20____м³." class="prod-btn" target="_blank">Получить расчёт</a>
+          </div>
+        </div>
+
+        <!-- Custom Cold Rooms -->
+        <div class="prod-card reveal reveal-delay-1">
+          <div class="prod-img-wrap">
+            <img src="monob-invent-heat-pump-2.png" class="prod-img">
+            <div class="prod-badge" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);">Холодильная камера</div>
+          </div>
+          <div class="prod-info">
+            <h3>Холодильные камеры — собственное производство</h3>
+            <p>Изготавливаем холодильные камеры любых габаритов под заказ. Сэндвич-панели 80–120 мм, гермодвери, освещение, пол — полная комплектация.</p>
+            <div class="prod-specs">
+              <span>📐 от 5 до 500 м³</span>
+              <span>🌡️ −18°C … +8°C</span>
+              <span>🏭 Собственное производство</span>
+            </div>
+            <div class="prod-models">
+              <div class="prod-model-row"><span>Панели:</span><span style="color:var(--white)">80 мм / 100 мм / 120 мм</span></div>
+              <div class="prod-model-row"><span>Температурный режим:</span><span style="color:var(--g4)">от −18°C до +8°C</span></div>
+              <div class="prod-model-row"><span>Гермодверь + пол:</span><span style="color:var(--white)">в комплекте</span></div>
+            </div>
+            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20холодильная%20камера%20под%20заказ.%20Размеры%20____м%20×%20____м%20×%20____м." class="prod-btn" target="_blank">Рассчитать камеру</a>
+          </div>
+        </div>
+
+        <!-- Shock Freezers -->
+        <div class="prod-card reveal reveal-delay-2">
+          <div class="prod-img-wrap">
+            <img src="monoblock-inv-heat-pump.png" class="prod-img">
+            <div class="prod-badge" style="background:linear-gradient(135deg,#6610f2,#0dcaf0);">Шоковая заморозка</div>
+          </div>
+          <div class="prod-info">
+            <h3>Камеры шоковой заморозки</h3>
+            <p>Быстрое замораживание продуктов за 90 минут с −18°C. Сохраняет структуру, вкус и питательные свойства. Решение для ресторанов, производств и логистики.</p>
+            <div class="prod-specs">
+              <span>⚡ до −35°C</span>
+              <span>⏱️ цикл 90 мин</span>
+              <span>🔧 Под ключ</span>
+            </div>
+            <div class="prod-models">
+              <div class="prod-model-row"><span>Температура заморозки:</span><span style="color:var(--g4)">до −35°C</span></div>
+              <div class="prod-model-row"><span>Ёмкость:</span><span style="color:var(--white)">от 30 до 500 кг/цикл</span></div>
+              <div class="prod-model-row"><span>Отраслевой стандарт:</span><span style="color:var(--white)">HACCP / ISO</span></div>
+            </div>
+            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20камера%20шоковой%20заморозки.%20Объём%20____кг/цикл." class="prod-btn" target="_blank">Обсудить проект</a>
           </div>
         </div>
 
@@ -1632,7 +1729,7 @@
       <a href="#catalog" onclick="showCat('warm-floor')">Тёплый пол <span class="dyn-floor-price">28</span>$/м²</a>
       <a href="#catalog" onclick="showCat('boilers')">Водонагреватели с тепловым насосом</a>
       <a href="#catalog" onclick="showCat('radiators')">Радиаторы</a>
-      <a href="#cold">Холодильное оборудование</a>
+      <a href="#catalog" onclick="showCat('cold')">Холодильное оборудование</a>
     </div>
     <div class="footer-col">
       <h4>Контакты</h4>
@@ -1690,12 +1787,15 @@
 
   // Catalog tabs
   function showCat(id) {
-    document.querySelectorAll('.cat-tab').forEach((t, i) => {
-      const ids = ['heat-pumps','fancoils','warm-floor','boilers','radiators'];
-      t.classList.toggle('active', ids[i] === id);
+    // Dynamically match tabs by their onclick attribute value
+    document.querySelectorAll('.cat-tab').forEach(t => {
+      const onclick = t.getAttribute('onclick') || '';
+      t.classList.toggle('active', onclick.includes("'" + id + "'"));
     });
     document.querySelectorAll('.cat-section').forEach(s => {
-      s.classList.toggle('active', s.id === 'cat-' + id);
+      const show = s.id === 'cat-' + id;
+      s.style.display = show ? '' : 'none';
+      s.classList.toggle('active', show);
     });
     // Re-trigger reveal for newly visible cards
     document.querySelectorAll('#cat-' + id + ' .reveal:not(.visible)').forEach(el => {

@@ -13,20 +13,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --g: #0d2818;
-    --g1: #0f3320;
-    --g2: #155c35;
-    --g3: #1e8049;
-    --g4: #27a85f;
-    --g5: #38d678;
-    --black: #050c08;
-    --dark: #0a1a0f;
-    --card: #0d2018;
-    --border: rgba(38,168,95,0.18);
-    --border2: rgba(38,168,95,0.35);
-    --text: #e8f5ee;
-    --muted: rgba(232,245,238,0.55);
-    --white: #f0faf4;
+    --g: #0c2317;         /* Глубокий изумрудный темный */
+    --g1: #0e2b1d;
+    --g2: #104c2e;        /* Благородный темно-зеленый */
+    --g3: #166e43;        /* Средний изумрудный */
+    --g4: #1b8a55;        /* Приглушенный зеленый акцент */
+    --g5: #2cc980;        /* Светло-зеленый (неоновый акцент в меру) */
+    --black: #121212;     /* Дорогой матовый черный */
+    --dark: #1c1f1d;      /* Графитовый с легким зеленым отливом */
+    --card: #242826;      /* Графитовый для карточек */
+    --border: rgba(44,201,128,0.12);
+    --border2: rgba(44,201,128,0.28);
+    --text: #e2e8f0;      /* Светлый slate */
+    --muted: #94a3b8;     /* Нейтральный slate */
+    --white: #f8fafc;
     --r: 12px;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -713,34 +713,115 @@
 
 <section id="services-page" style="padding-top: 150px; padding-bottom: 100px; min-height: 80vh; background: var(--black);">
   <div style="max-width: 1300px; margin: 0 auto;">
-    <div class="sec-head" style="text-align:center; margin-bottom: 60px;">
-      <h1 class="sec-title">Что мы делаем кроме продажи коробок</h1>
+    <div class="sec-head" style="text-align:center; max-width:700px; margin:0 auto 60px;">
+      <span class="sec-tag">Инженерные системы</span>
+      <h1 class="sec-title" style="margin-top:16px;">Наши услуги под ключ</h1>
+      <p class="sec-desc" style="margin:16px auto 0;">Полный цикл: от проектирования до пусконаладки и сервисного обслуживания. Работаем с частными домами, коммерческими и промышленными объектами по всему Кыргызстану.</p>
     </div>
-    
+
     <div class="services-grid">
-      <div class="srv-card">
-        <div class="srv-icon">📐</div>
-        <h3>Проектирование</h3>
-        <p>Не начинаем монтаж, пока не нарисуем схему. Где поставить наружный блок, как развести трубы, сколько фанкойлов нужно — всё считаем заранее. Экономит ваши деньги и наши нервы</p>
+
+      <!-- HEATING -->
+      <div class="srv-card reveal">
+        <div class="srv-icon">🔥</div>
+        <h3>Отопление</h3>
+        <p>Проектируем и собираем надёжные отопительные системы на базе тепловых насосов. Выполняем обвязку котельных, монтаж радиаторов, внутрипольных конвекторов и разводку трубопроводов с точной балансировкой.</p>
+        <div class="srv-tags">
+          <span class="tag">Тепловые насосы</span>
+          <span class="tag">Котельные</span>
+          <span class="tag">Радиаторы</span>
+          <span class="tag">Разводка труб</span>
+          <span class="tag">Балансировка</span>
+        </div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20монтаж%20отопления%20под%20ключ." class="srv-btn" target="_blank">💬 Обсудить проект</a>
       </div>
-      <div class="srv-card">
+
+      <!-- WARM FLOORS -->
+      <div class="srv-card reveal reveal-delay-1">
+        <div class="srv-icon">♨️</div>
+        <h3>Тёплые полы</h3>
+        <p>Качественный монтаж водяного тёплого пола с расчётом тепловой нагрузки. Используем плотную подложку Пеноплекс 5 см, фольгоизол, долговечные трубы PE-RT Valfex и надёжные коллекторные шкафы.</p>
+        <div class="srv-tags">
+          <span class="tag">Valfex PE-RT</span>
+          <span class="tag">Пеноплекс 5 см</span>
+          <span class="tag">Коллекторы</span>
+          <span class="tag">Стяжка</span>
+          <span class="tag">от 28$/м²</span>
+        </div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20монтаж%20тёплого%20пола.%20Площадь%20____м²." class="srv-btn" target="_blank">💬 Рассчитать смету</a>
+      </div>
+
+      <!-- WATER SUPPLY -->
+      <div class="srv-card reveal reveal-delay-2">
+        <div class="srv-icon">💧</div>
+        <h3>Водоснабжение</h3>
+        <p>Организуем бесперебойную подачу горячей и холодной воды. Прокладываем трубы, устанавливаем насосы, гидроаккумуляторы, системы фильтрации и водоподготовки — от скважины до крана.</p>
+        <div class="srv-tags">
+          <span class="tag">ХВС/ГВС</span>
+          <span class="tag">Фильтры</span>
+          <span class="tag">Насосные группы</span>
+          <span class="tag">Водоподготовка</span>
+        </div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20система%20водоснабжения." class="srv-btn" target="_blank">💬 Обсудить в WhatsApp</a>
+      </div>
+
+      <!-- SEWAGE -->
+      <div class="srv-card reveal reveal-delay-3">
+        <div class="srv-icon">🌀</div>
+        <h3>Канализация</h3>
+        <p>Проектируем и прокладываем внутренние и наружные сети водоотведения. Устанавливаем долговечные септики, прокладываем наружные магистрали с соблюдением уклонов, монтируем ливневую канализацию.</p>
+        <div class="srv-tags">
+          <span class="tag">Септики</span>
+          <span class="tag">Наружные сети</span>
+          <span class="tag">Ливневка</span>
+          <span class="tag">Уклоны по нормам</span>
+        </div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20монтаж%20канализации." class="srv-btn" target="_blank">💬 Обсудить проект</a>
+      </div>
+
+      <!-- INSTALLATION & COMMISSIONING -->
+      <div class="srv-card reveal">
         <div class="srv-icon">🔧</div>
-        <h3>Монтаж</h3>
-        <p>Наши бригады — не случайные люди с авито. Работают по стандартам, знают оборудование SolarEast, Sunrain и NULITE вдоль и поперёк. Средний монтаж дома 120 м² — 1–3 дня</p>
+        <h3>Монтаж и пусконаладка</h3>
+        <p>Профессиональный монтаж тепловых насосов, фанкойлов и промышленных холодильных систем. Настраиваем параметры, обучаем персонал, интегрируем климат в единую систему управления Modbus (BMS).</p>
+        <div class="srv-tags">
+          <span class="tag">Тепловые насосы</span>
+          <span class="tag">Фанкойлы</span>
+          <span class="tag">Modbus / BMS</span>
+          <span class="tag">Сервис</span>
+          <span class="tag">Обучение</span>
+        </div>
+        <a href="https://wa.me/996999699620?text=Здравствуйте!%20Нужен%20монтаж%20и%20сервисное%20обслуживание." class="srv-btn" target="_blank">💬 Вызвать инженера</a>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">🧼</div>
-        <h3>Обслуживание</h3>
-        <p>Раз в год приедем, проверим давление, почистим фильтры, обновим прошивку. Как у стоматолога — лучше профилактика, чем ремонт</p>
+
+    </div>
+
+    <!-- WHY US block -->
+    <div style="margin-top:80px; background:linear-gradient(135deg,#0e2b1d,#1c1f1d); border:1px solid rgba(44,201,128,0.2); border-radius:20px; padding:48px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px;">
+      <div>
+        <div style="font-size:36px;margin-bottom:12px;">🏆</div>
+        <h4 style="color:var(--white);font-size:17px;margin-bottom:8px;">10+ лет на рынке</h4>
+        <p style="color:var(--muted);font-size:14px;">Работаем с 2014 года. За это время выполнили более 300 объектов — от частных домов до промышленных предприятий.</p>
       </div>
-      <div class="srv-card">
-        <div class="srv-icon">🛡️</div>
-        <h3>Гарантийный ремонт</h3>
-        <p>Если что-то сломалось по нашей вине — чиним за свой счёт. Если по вине производителя — сами общаемся с заводом. Вам не придётся доказывать, что вы всё делали правильно</p>
+      <div>
+        <div style="font-size:36px;margin-bottom:12px;">📋</div>
+        <h4 style="color:var(--white);font-size:17px;margin-bottom:8px;">Проект до монтажа</h4>
+        <p style="color:var(--muted);font-size:14px;">Ни один объект не начинаем без схемы и расчёта тепловой нагрузки. Это экономит ваши деньги и исключает переделки.</p>
+      </div>
+      <div>
+        <div style="font-size:36px;margin-bottom:12px;">🛡️</div>
+        <h4 style="color:var(--white);font-size:17px;margin-bottom:8px;">Гарантия на работы</h4>
+        <p style="color:var(--muted);font-size:14px;">Гарантия на монтажные работы — 12 месяцев. На оборудование SolarEast/Sunrain — по условиям производителя.</p>
+      </div>
+      <div>
+        <div style="font-size:36px;margin-bottom:12px;">📅</div>
+        <h4 style="color:var(--white);font-size:17px;margin-bottom:8px;">Рассрочка без %</h4>
+        <p style="color:var(--muted);font-size:14px;">Внутренняя рассрочка без банков: 50% аванс, остаток — равными платежами. Без процентов и переплат.</p>
       </div>
     </div>
+
     <div style="text-align:center; margin-top: 50px;">
-      <a href="callback.html" class="btn-primary" style="font-size: 16px; padding: 16px 32px;">Нужна консультация?</a>
+      <a href="callback.html" class="btn-primary" style="font-size: 16px; padding: 16px 32px; display:inline-flex; gap:10px; align-items:center;">📞 Нужна консультация?</a>
     </div>
   </div>
 </section>
@@ -765,7 +846,7 @@
       <a href="#catalog" onclick="showCat('fancoils')">Фанкойлы NULITE</a>
       <a href="#catalog" onclick="showCat('warm-floor')">Тёплый пол <span class="dyn-floor-price">28</span>$/м²</a>
       <a href="#catalog" onclick="showCat('boilers')">Водонагреватели с тепловым насосом Sunrain</a>
-      <a href="#cold">Холодильное оборудование</a>
+      <a href="index.html#catalog" onclick="">Холодильное оборудование</a>
     </div>
     <div class="footer-col">
       <h4>Контакты</h4>
