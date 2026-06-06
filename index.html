@@ -1304,8 +1304,22 @@
               <div class="prod-model-row"><span>Коллектор 1" 6 выходов + шкаф</span><span style="color:var(--g4)">✓</span></div>
               <div class="prod-model-row"><span>Фитинги + монтажная пена + хомуты</span><span style="color:var(--g4)">✓</span></div>
               <div class="prod-model-row"><span>Монтаж теплого пола и шкафов</span><span style="color:var(--g4)">✓</span></div>
+              
+              <div class="form-group" style="margin-top:16px; margin-bottom:12px;">
+                <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">Выберите площадь для расчета:</label>
+                <select class="area-select" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:10px;border-radius:8px;outline:none;" onchange="updateProd(this)">
+                  <option style="color:#000" value='{"m":"Тёплый пол", "p":"от $1 400", "a":"до 50 м²"}'>До 50 м²</option>
+                  <option style="color:#000" value='{"m":"Тёплый пол", "p":"от $2 800", "a":"до 100 м²"}'>До 100 м²</option>
+                  <option style="color:#000" value='{"m":"Тёплый пол", "p":"от $4 200", "a":"до 150 м²"}'>До 150 м²</option>
+                  <option style="color:#000" value='{"m":"Тёплый пол", "p":"от $5 600", "a":"до 200 м²"}'>До 200 м²</option>
+                </select>
+              </div>
+              <div class="prod-dyn-info" style="display:none;background:rgba(39,168,95,0.05);padding:14px;border-radius:8px;border:1px solid var(--border2);animation:fadeIn 0.3s forwards;">
+                <div class="prod-model-row"><span style="color:var(--white);">Услуга:</span><strong class="d-mod" style="color:var(--g4);"></strong></div>
+                <div class="prod-model-row"><span style="color:var(--white);">Примерная цена:</span><strong class="d-prc" style="color:var(--g5);font-size:18px;"></strong></div>
+              </div>
             </div>
-            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20система%20тёплый%20пол%20под%20ключ.%20Площадь%20____м²." class="prod-btn" target="_blank">Рассчитать стоимость</a>
+            <a href="#" class="prod-btn d-btn" target="_blank" style="display:none;">Рассчитать стоимость</a>
           </div>
         </div>
       </div>
@@ -1467,8 +1481,21 @@
               <div class="prod-model-row"><span>Мощность охлаждения:</span><span style="color:var(--g4)">5 – 50 кВт</span></div>
               <div class="prod-model-row"><span>Хладагент:</span><span style="color:var(--white)">R404A / R448A</span></div>
               <div class="prod-model-row"><span>Монтаж:</span><span style="color:var(--white)">входит в стоимость</span></div>
+              
+              <div class="form-group" style="margin-top:16px; margin-bottom:12px;">
+                <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">Выберите мощность:</label>
+                <select class="area-select" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:10px;border-radius:8px;outline:none;" onchange="updateProd(this)">
+                  <option style="color:#000" value='{"m":"Промышленная сплит-система", "p":"Индивидуальный расчет", "a":"5-10 кВт"}'>Мощность 5-10 кВт</option>
+                  <option style="color:#000" value='{"m":"Промышленная сплит-система", "p":"Индивидуальный расчет", "a":"10-20 кВт"}'>Мощность 10-20 кВт</option>
+                  <option style="color:#000" value='{"m":"Промышленная сплит-система", "p":"Индивидуальный расчет", "a":"20-50 кВт"}'>Мощность 20-50 кВт</option>
+                </select>
+              </div>
+              <div class="prod-dyn-info" style="display:none;background:rgba(39,168,95,0.05);padding:14px;border-radius:8px;border:1px solid var(--border2);animation:fadeIn 0.3s forwards;">
+                <div class="prod-model-row"><span style="color:var(--white);">Модель:</span><strong class="d-mod" style="color:var(--g4);"></strong></div>
+                <div class="prod-model-row"><span style="color:var(--white);">Цена:</span><strong class="d-prc" style="color:var(--g5);font-size:18px;"></strong></div>
+              </div>
             </div>
-            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20промышленная%20сплит-система%20для%20охлаждения.%20Объём%20помещения%20____м³." class="prod-btn" target="_blank">Получить расчёт</a>
+            <a href="#" class="prod-btn d-btn" target="_blank" style="display:none;">Получить расчет</a>
           </div>
         </div>
 
@@ -1490,8 +1517,21 @@
               <div class="prod-model-row"><span>Панели:</span><span style="color:var(--white)">80 мм / 100 мм / 120 мм</span></div>
               <div class="prod-model-row"><span>Температурный режим:</span><span style="color:var(--g4)">от −18°C до +8°C</span></div>
               <div class="prod-model-row"><span>Гермодверь + пол:</span><span style="color:var(--white)">в комплекте</span></div>
+
+              <div class="form-group" style="margin-top:16px; margin-bottom:12px;">
+                <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">Выберите объем камеры:</label>
+                <select class="area-select" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:10px;border-radius:8px;outline:none;" onchange="updateProd(this)">
+                  <option style="color:#000" value='{"m":"Холодильная камера", "p":"Индивидуальный расчет", "a":"до 50 м³"}'>Объем до 50 м³</option>
+                  <option style="color:#000" value='{"m":"Холодильная камера", "p":"Индивидуальный расчет", "a":"50-100 м³"}'>Объем 50-100 м³</option>
+                  <option style="color:#000" value='{"m":"Холодильная камера", "p":"Индивидуальный расчет", "a":"100-500 м³"}'>Объем 100-500 м³</option>
+                </select>
+              </div>
+              <div class="prod-dyn-info" style="display:none;background:rgba(39,168,95,0.05);padding:14px;border-radius:8px;border:1px solid var(--border2);animation:fadeIn 0.3s forwards;">
+                <div class="prod-model-row"><span style="color:var(--white);">Модель:</span><strong class="d-mod" style="color:var(--g4);"></strong></div>
+                <div class="prod-model-row"><span style="color:var(--white);">Цена:</span><strong class="d-prc" style="color:var(--g5);font-size:18px;"></strong></div>
+              </div>
             </div>
-            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20холодильная%20камера%20под%20заказ.%20Размеры%20____м%20×%20____м%20×%20____м." class="prod-btn" target="_blank">Рассчитать камеру</a>
+            <a href="#" class="prod-btn d-btn" target="_blank" style="display:none;">Рассчитать камеру</a>
           </div>
         </div>
 
@@ -1513,8 +1553,21 @@
               <div class="prod-model-row"><span>Температура заморозки:</span><span style="color:var(--g4)">до −35°C</span></div>
               <div class="prod-model-row"><span>Ёмкость:</span><span style="color:var(--white)">от 30 до 500 кг/цикл</span></div>
               <div class="prod-model-row"><span>Отраслевой стандарт:</span><span style="color:var(--white)">HACCP / ISO</span></div>
+
+              <div class="form-group" style="margin-top:16px; margin-bottom:12px;">
+                <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">Выберите емкость:</label>
+                <select class="area-select" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:10px;border-radius:8px;outline:none;" onchange="updateProd(this)">
+                  <option style="color:#000" value='{"m":"Камера шоковой заморозки", "p":"Индивидуальный расчет", "a":"30-100 кг/цикл"}'>Емкость 30-100 кг/цикл</option>
+                  <option style="color:#000" value='{"m":"Камера шоковой заморозки", "p":"Индивидуальный расчет", "a":"100-250 кг/цикл"}'>Емкость 100-250 кг/цикл</option>
+                  <option style="color:#000" value='{"m":"Камера шоковой заморозки", "p":"Индивидуальный расчет", "a":"250-500 кг/цикл"}'>Емкость 250-500 кг/цикл</option>
+                </select>
+              </div>
+              <div class="prod-dyn-info" style="display:none;background:rgba(39,168,95,0.05);padding:14px;border-radius:8px;border:1px solid var(--border2);animation:fadeIn 0.3s forwards;">
+                <div class="prod-model-row"><span style="color:var(--white);">Модель:</span><strong class="d-mod" style="color:var(--g4);"></strong></div>
+                <div class="prod-model-row"><span style="color:var(--white);">Цена:</span><strong class="d-prc" style="color:var(--g5);font-size:18px;"></strong></div>
+              </div>
             </div>
-            <a href="https://wa.me/996999699620?text=Здравствуйте!%20Интересует%20камера%20шоковой%20заморозки.%20Объём%20____кг/цикл." class="prod-btn" target="_blank">Обсудить проект</a>
+            <a href="#" class="prod-btn d-btn" target="_blank" style="display:none;">Обсудить проект</a>
           </div>
         </div>
 
