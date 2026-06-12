@@ -1542,7 +1542,8 @@
 
     .prod-img-wrap {
       position: relative;
-      background: transparent;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px 8px 0 0;
       height: 210px;
       display: flex;
       align-items: center;
@@ -2352,7 +2353,7 @@
           <!-- R32 Monoblock Inverter -->
           <div class="prod-card reveal">
             <div class="prod-img-wrap">
-              <img src="коммер полн теп нас-no-bg-HD (carve.photos).png" class="prod-img">
+              <img src="heat-pump-commercial.png" class="prod-img">
               <div class="prod-badge eco">ECO+++ R290</div>
             </div>
             <div class="prod-info">
@@ -2448,7 +2449,7 @@
           <!-- R32 A+++ Inverter -->
           <div class="prod-card reveal reveal-delay-3">
             <div class="prod-img-wrap">
-              <img src="моноблоч_инв_тепл_насос_no_bg_preview_carve_photos.png" class="prod-img">
+              <img src="heat-pump-monoblock.png" class="prod-img">
               <div class="prod-badge aplus">A+++ R32</div>
             </div>
             <div class="prod-info">
@@ -2667,7 +2668,7 @@
         <div class="prod-grid">
           <div class="prod-card reveal" style="max-width:680px;">
             <div class="prod-img-wrap">
-              <img src="теплые полы.png" class="prod-img">
+              <img src="warm-floor.png" class="prod-img">
               <div class="prod-badge eco"><span class="dyn-floor-price">28</span>$ / м²</div>
             </div>
             <div class="prod-info">
@@ -2925,7 +2926,7 @@
       <!-- Custom Cold Rooms -->
       <!-- <div class="prod-card reveal reveal-delay-1">
           <div class="prod-img-wrap">
-            <img src="моноб_инвент_теп_нас_2_no_bg_preview_carve_photos.png" class="prod-img">
+            <img src="heat-pump-monoblock2.png" class="prod-img">
             <div class="prod-badge">Холодильная камера</div>
           </div>
           <div class="prod-info">
@@ -2961,7 +2962,7 @@
       <!-- Shock Freezers -->
       <!-- <div class="prod-card reveal reveal-delay-2">
           <div class="prod-img-wrap">
-            <img src="моноблоч_инв_тепл_насос_no_bg_preview_carve_photos.png" class="prod-img">
+            <img src="heat-pump-monoblock.png" class="prod-img">
             <div class="prod-badge">Шоковая заморозка</div>
           </div>
           <div class="prod-info">
@@ -3494,9 +3495,7 @@
       <script>
         document.addEventListener('DOMContentLoaded', async () => {
           try {
-            const res = await fetch('/api/data');
-            if (!res.ok) return;
-            const data = await res.json();
+            const data = await loadSiteData();
             if (typeof applyDataToDOM === 'function') {
               applyDataToDOM(data);
             } else {
@@ -3785,6 +3784,56 @@
         let logoClicks = 0;
         let logoClickTimeout;
 
+        // Данные по умолчанию (используются когда нет сервера — GitHub Pages)
+        const DEFAULT_SITE_DATA = {
+          texts: {
+            heroTitle: "Тепловые насосы<br>и инженерные<br><em>системы под ключ</em>",
+            heroSub: "Проектируем, монтируем и обслуживаем отопление, вентиляцию, холодильное оборудование и водоснабжение. Берём на себя всё — от расчёта до запуска.",
+            about: "Мы — не перекупщики с Ошского рынка. 8 лет ставим тепло в дома по Кыргызстану. Знаем, как работает наше оборудование в наших морозах.",
+            warranty: "Гарантия 2 года на оборудование, 1 год на монтаж. Сервисное обслуживание — пожизненно."
+          },
+          contacts: {
+            phone: "+996 999 699 620",
+            address: "Бишкек, Токтоналиева 104",
+            wa: "996999699620"
+          },
+          floorPrice: 28,
+          equipment: [
+            { category: 'heat-pumps', name: 'Коммерческий тепловой насос R290', model: 'BNL-050TC3', price: 13486, image: 'heat-pump-commercial.png' },
+            { category: 'heat-pumps', name: 'Моноблочный инвертор R32', model: 'БЛН-006ТБ1', price: 3703, image: 'heat-pump-monoblock.png' },
+            { category: 'heat-pumps', name: 'Моноблочный коммерческий насос', model: 'DNL-050TA1', price: 9810, image: 'heat-pump-commercial-mono.png' },
+            { category: 'fancoils', name: 'Настенный фанкойл', model: 'ФП 68БГ', price: 320, image: 'fancoil-wall.png' },
+            { category: 'fancoils', name: 'Настенный фанкойл', model: 'ФП 85БГ', price: 480, image: 'fancoil-wall.png' },
+            { category: 'fancoils', name: 'Кассетный фанкойл', model: 'ФП 34КМ', price: 510, image: 'fancoil-cassette.png' },
+            { category: 'fancoils', name: 'Напольный фанкойл', model: 'ФП 136ЛЗ', price: 580, image: 'fancoil-floor.png' },
+            { category: 'radiators', name: 'Биметаллический радиатор', model: 'Royal Thermo (секция)', price: 8, image: 'radiator.png' },
+            { category: 'warm-floor', name: 'Труба PE-RT Valfex', model: 'Бухта 200м', price: 120, image: 'warm-floor.png' },
+            { category: 'boilers', name: 'Бойлер вертикальный', model: 'R134a 200L', price: 850, image: 'boiler-vertical.png' },
+            { category: 'boilers', name: 'Водонагреватель настенный', model: 'Ariston 80L', price: 320, image: 'boiler-wall.png' }
+          ]
+        };
+
+        // Загрузка данных: сначала сервер, потом localStorage, потом defaults
+        async function loadSiteData() {
+          try {
+            const res = await fetch('/api/data', { signal: AbortSignal.timeout(3000) });
+            if (res.ok) {
+              const data = await res.json();
+              localStorage.setItem('siteData', JSON.stringify(data));
+              return data;
+            }
+          } catch (e) { /* сервер недоступен */ }
+
+          // Попытка из localStorage
+          const saved = localStorage.getItem('siteData');
+          if (saved) {
+            try { return JSON.parse(saved); } catch(e) {}
+          }
+
+          // Возвращаем defaults
+          return DEFAULT_SITE_DATA;
+        }
+
         function handleLogoClick(e) {
           e.preventDefault();
           logoClicks++;
@@ -3836,32 +3885,25 @@
         }
 
         async function loadAdminFields() {
-          try {
-            const res = await fetch('/api/data');
-            if (!res.ok) return;
-            const data = await res.json();
+          const data = await loadSiteData();
 
-            if (data.texts) {
-              document.getElementById('adm-txt-hero-title').value = data.texts.heroTitle || '';
-              document.getElementById('adm-txt-hero-sub').value = data.texts.heroSub || '';
-              document.getElementById('adm-txt-about').value = data.texts.about || '';
-              document.getElementById('adm-txt-warranty').value = data.texts.warranty || '';
-            }
-            if (data.contacts) {
-              document.getElementById('adm-contact-phone').value = data.contacts.phone || '';
-              document.getElementById('adm-contact-address').value = data.contacts.address || '';
-              document.getElementById('adm-contact-wa').value = data.contacts.wa || '';
-            }
-            document.getElementById('adm-floor-price').value = data.floorPrice || 28;
+          if (data.texts) {
+            document.getElementById('adm-txt-hero-title').value = data.texts.heroTitle || '';
+            document.getElementById('adm-txt-hero-sub').value = data.texts.heroSub || '';
+            document.getElementById('adm-txt-about').value = data.texts.about || '';
+            document.getElementById('adm-txt-warranty').value = data.texts.warranty || '';
+          }
+          if (data.contacts) {
+            document.getElementById('adm-contact-phone').value = data.contacts.phone || '';
+            document.getElementById('adm-contact-address').value = data.contacts.address || '';
+            document.getElementById('adm-contact-wa').value = data.contacts.wa || '';
+          }
+          document.getElementById('adm-floor-price').value = data.floorPrice || 28;
 
-            // Load equipment
-            const eqContainer = document.getElementById('equipment-rows');
-            eqContainer.innerHTML = '';
-            if (Array.isArray(data.equipment)) {
-              data.equipment.forEach(eq => addEquipmentRow(eq));
-            }
-          } catch (e) {
-            console.error(e);
+          const eqContainer = document.getElementById('equipment-rows');
+          eqContainer.innerHTML = '';
+          if (Array.isArray(data.equipment)) {
+            data.equipment.forEach(eq => addEquipmentRow(eq));
           }
         }
 
@@ -3941,18 +3983,27 @@
           msg.style.color = '#38d678';
 
           try {
-            const response = await fetch('/api/data', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ password: adminToken, data })
-            });
-            const resData = await response.json();
-            if (!response.ok) throw new Error(resData.error || 'Ошибка сохранения');
+            // Попытка сохранить на сервер
+            let serverOk = false;
+            try {
+              const response = await fetch('/api/data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: adminToken, data }),
+                signal: AbortSignal.timeout(4000)
+              });
+              serverOk = response.ok;
+            } catch(e) { /* сервер недоступен */ }
 
-            msg.textContent = 'Успешно сохранено и обновлено!';
+            // Всегда сохраняем в localStorage (работает на GitHub Pages)
+            localStorage.setItem('siteData', JSON.stringify(data));
+
+            msg.textContent = serverOk
+              ? 'Сохранено на сервер и в браузер!'
+              : 'Сохранено в браузере (сервер недоступен)!';
             msg.style.color = '#38d678';
 
-            // Update DOM instantly
+            // Обновить DOM мгновенно
             applyDataToDOM(data);
 
             setTimeout(() => {
