@@ -4051,34 +4051,7 @@
             document.querySelectorAll('.dyn-floor-price').forEach(el => el.textContent = data.floorPrice);
           }
 
-          if (data.equipment && Array.isArray(data.equipment)) {
-            const categories = ['heat-pumps', 'fancoils', 'warm-floor', 'radiators', 'boilers'];
-            categories.forEach(cat => {
-              const grid = document.querySelector(`#cat-${cat} .prod-grid`);
-              if (!grid) return;
-              
-              const items = data.equipment.filter(eq => eq.category === cat);
-              if (items.length > 0) {
-                grid.innerHTML = items.map(eq => `
-                  <div class="prod-card reveal visible">
-                    <div class="prod-img-wrap" style="${!eq.image ? 'display:none;' : ''}">
-                      <img src="${eq.image || ''}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.display='none'">
-                    </div>
-                    <div class="prod-info">
-                      <h3>${eq.name}</h3>
-                      <div class="prod-models">
-                        <div class="prod-model-row">
-                          <span>${eq.model || '-'}</span>
-                          <strong>${eq.price ? eq.price + '$' : 'По запросу'}</strong>
-                        </div>
-                      </div>
-                      <a href="https://wa.me/${data.contacts ? data.contacts.wa : '996999699620'}?text=Здравствуйте!%20Меня%20интересует%20${encodeURIComponent(eq.name)}%20(${encodeURIComponent(eq.model)})" class="prod-btn" target="_blank">Заказать расчёт</a>
-                    </div>
-                  </div>
-                `).join('');
-              }
-            });
-          }
+
         }
       </script>
 </body>
